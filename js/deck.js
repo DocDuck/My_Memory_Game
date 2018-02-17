@@ -42,11 +42,11 @@ $(document).ready(function(){
 		$(this).fadeIn();
 	});
 	
-	$('.cards_row').on('tap','.back_deck',function(){
+	$('.cards_row').on('tap','.back_deck',function(){//алгоритм сравнения 2х карт после клика/тапания
 		console.log('tapped');
 		counttap++;
-		$(this).fadeOut();
-		openedCards.push($(this).next().data("card"));
+		$(this).fadeOut();//скрыли задник, открыли картинку
+		openedCards.push($(this).next().data("card"));//записали НЕПОНЯТНО КАК в массив открытых карт
 		console.log(openedCards);
 		backCards.push($(this).attr("id"));
 		console.log(backCards);
@@ -70,29 +70,29 @@ $(document).ready(function(){
 });
 
 function matchOpen(){
-	if(counttap==2){
-		if(backCards[0] != backCards[1]){
-			if(openedCards[0] === openedCards[1]) {
+	if(counttap==2){//если тапнул 2 раза
+		if(backCards[0] != backCards[1]){//ПОЧЕМУ СРАВНИВАЮТСЯ ПЕРВЫЕ ДВА ЭЛЕМЕНТА МАССИВА???
+			if(openedCards[0] === openedCards[1]) {//ПОЧЕМУ СРАВНИВАЮТСЯ ПЕРВЫЕ ДВА ЭЛЕМЕНТА МАССИВА??? 
 				for(var xx = 0; xx<backCards.length; xx++){
-					allmatched.push(backCards[xx]);
+					allmatched.push(backCards[xx]);//заполняется массив с раскрытыми картами
 				}
 				countPaired = countPaired+1;
 				if(countPaired == numpairs) {
-					//setTimeout(function(){alert('completed in '+timer+' secs')},500)
-					
+					//тут условие конца игры, переход на экран с количеством очков 
+					//запуск fadeOut'ов
 					setTimeout(function(){$('.result').show()},500);
-					$('.result_pairs').text('Matched '+ numpairs +' Pairs in');
-					$('.result_time').text(timer +' Seconds');
+					$('.result_pairs').text('Matched '+ numpairs +' Pairs in');//тут 
+					// $('.result_time').text(timer +' Seconds'); нахер таймер
 					
 				}
 			}
 			else {
 				
-				$("#"+backCards[0]).delay(200).fadeIn();
-				$("#"+backCards[1]).fadeIn();
+				$("#"+backCards[0]).delay(200).fadeIn();//если условия не выполняются 
+				$("#"+backCards[1]).fadeIn();//обе карты снова прячутся за рубашку
 				
-				$('.back_deck').fadeIn();
-				for(var am=0; am<allmatched.length; am++){
+				$('.back_deck').fadeIn();//класс задника снова активен
+				for(var am=0; am<allmatched.length; am++){//малость не понял логику
 					$("#"+allmatched[am]).hide();
 				}
 			}
