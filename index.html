@@ -1,0 +1,56 @@
+<!doctype HTML>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/fonts.css" />
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/doubletap.js"></script>
+<script src="js/deck.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/deck.css">
+</head>
+<body>
+<div data-role="page" id="play">
+ 
+	<div class="header">
+		<div class="container container-fluid start_container">
+			<div class="row no-gutters justify-content-center">
+				<div class="col col-auto"><img class="start_img img-fluid" src="img/StartGame.png" alt=""></div>
+			</div>
+			<div class="row no-gutters justify-content-center">
+				<div class="col-auto"><div class="start_title"><p>Memory Game</p></div></div>
+			</div>
+			<div class="row no-gutters justify-content-center">
+				<div class="col-auto"><button type="button" class="btn btn-lg btn-block start_btn"><p>Начать Игру</p></button></div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="container">
+		<div class="row justify-content-between row-controls">
+			<div class="btnReset col-1" id="reset" data-pairs>Начать заново</div> <!-- что то я туплю и не понимаю как 2 слова в строку вытянуть... -->
+			<div class="col-1 score">Очки: 0</div>
+		<div class="cards_container" >
+			
+			<div class="row justify-content-center no-gutters cards_row"></div>
+		</div>
+	</div>
+</div>
+		
+	
+	<div class="result">
+	
+	<a class="close">Close</a>
+	</div>
+ 
+</div>
+
+</body>
+
+</html>

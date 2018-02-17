@@ -1,0 +1,49 @@
+body {
+  background: url(../img/background.jpg) no-repeat repeat;
+  background-size: cover;
+}
+
+.start_container {
+  margin-top: 196px;
+}
+
+.start_title {
+  margin-top: 20px;
+}
+
+.start_title p {
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.85;
+  font-family: OpenSans-Bold;
+  font-size: 28px;
+  color: #FFFFFF;
+  letter-spacing: 0.2px;
+}
+
+.start_btn {
+  margin-top: 34px;
+  margin-bottom: 110px;
+  opacity: 0.85;
+  background: #FFFFFF;
+  border-radius: 4px;
+  width: 144px;
+  height: 42px;
+}
+
+.start_btn p {
+  height: 22px;
+  width: 104px;
+  font-family: OpenSans-Bold;
+  font-size: 16px;
+  color: #1C7430;
+  letter-spacing: 0;
+}
+
+
+
+.img {
+  width: 198px;
+  height: 230px;
+  background: url(../img/Cards/back.png);
+}
