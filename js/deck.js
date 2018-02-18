@@ -141,7 +141,7 @@ function load_cards(){
 		for(var y=0; y<18; y++){
 			$('.row_cards').append("<div class='deck col-2'><img id='cont"+y+"' class=' back_deck' src='img/Cards/back.png'></div>");//загрузились карты и пронумированы айдишками с 0 до 18
 			cardsLoc.push(y);//айдишки запушились в массив
-		}
+		}//вот тут надо как то прописать чтобы через каждые 3 кола вставлялся класс w-100
 		
 		shuffle(cardsLoc);//перемешивание айдишников карт в колоде
 		
