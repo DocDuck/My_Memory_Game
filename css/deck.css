@@ -154,14 +154,15 @@ a, a:link, a:active, a:visited {
 
 .deck {
 	max-width: 102px;
-	margin-bottom:20px;
-	margin-right: 20px;
+	margin-bottom:2.7%;
+	margin-right: 2.7%;
 	position: relative;
 
 }
 
 .deck img { /*вот эта штука выравнивает лицевой и задний размеры карт*/
 	max-width:100%;
+	
 }
 .front_deck, .back_deck {
 	border-radius: 5%;
