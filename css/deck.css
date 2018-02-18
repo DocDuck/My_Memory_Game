@@ -139,7 +139,7 @@ a, a:link, a:active, a:visited {
 	font-size: 14px;
 	color: #FFFFFF;
 	letter-spacing: 0;
-	
+	margin-right: 25px;
 	width: auto;
 	height: 19px;
 	
@@ -156,6 +156,8 @@ a, a:link, a:active, a:visited {
 	max-width: 102px;
 	margin-bottom:20px;
 	margin-right: 25px;
+	position: relative;
+
 }
 
 .deck img { /*вот эта штука выравнивает лицевой и задний размеры карт*/
