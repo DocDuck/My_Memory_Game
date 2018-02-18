@@ -146,20 +146,19 @@ a, a:link, a:active, a:visited {
 }	
 
 .cards_container {
+	max-width: 762px;
 	margin:19px auto;
 	text-align:center;
 	position:relative;
 }
 
 .deck {
-	width: 102px;
-	overflow:hidden; /*тут костыль, просто обрезает задник карты по маргину*/
-	margin-bottom:10px;
-	/*margin-left: 5px; из за этого маргина 6я карта переносится на новую строку! Я хз как расширить контейнер или уменьшить сами карты*/
-	position:relative;
+	max-width: 102px;
+	margin-bottom:20px;
+	margin-right: 25px;
 }
 
-.deck img {
+.deck img { /*вот эта штука выравнивает лицевой и задний размеры карт*/
 	max-width:100%;
 }
 .front_deck, .back_deck {
@@ -171,7 +170,7 @@ a, a:link, a:active, a:visited {
 }
 
 .back_deck {
-	position: absolute; /*не знаю как по другому наложить картинки...*/
+	position: absolute; 
 	
 }
 .ui-loader {

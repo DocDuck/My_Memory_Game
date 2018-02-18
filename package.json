@@ -1,0 +1,19 @@
+{
+  "name": "my_memory_game_bootstrap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DocDuck/My_Memory_Game.git"
+  },
+  "author": "Alex_Mitin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DocDuck/My_Memory_Game/issues"
+  },
+  "homepage": "https://github.com/DocDuck/My_Memory_Game#readme"
+}

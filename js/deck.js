@@ -35,14 +35,14 @@ $(document).ready(function(){
 		
 	});
 	
-	$('.cards_row').on('doubletap','.back_deck',function(event){
+	$('.row_cards').on('doubletap','.back_deck',function(event){
 		backCards = [];
 		openedCards = [];
 		counttap = 0;
 		$(this).fadeIn();
 	});
 	
-	$('.cards_row').on('tap','.back_deck',function(){//алгоритм сравнения 2х карт после клика/тапания
+	$('.row_cards').on('tap','.back_deck',function(){//алгоритм сравнения 2х карт после клика/тапания
 		console.log('tapped');
 		counttap++;
 		$(this).fadeOut();//скрыли задник, открыли картинку
@@ -56,7 +56,7 @@ $(document).ready(function(){
 	
 	$('.row-controls').on('tap','#reset',function(){//реснуть колоду
 		resetAll();
-		$('.cards_row').empty();
+		$('.row_cards').empty();
 		load_cards(9);
 		starttheTime = setInterval(function(){timer=timer+1;console.log(timer);},1000);
 		console.log('reset');
@@ -139,7 +139,7 @@ function load_cards(){
 	setTimeout(function(){
 		
 		for(var y=0; y<18; y++){
-			$('.cards_row').append("<div class='deck col-2'><img id='cont"+y+"' class=' back_deck' src='img/Cards/back.png'></div>");//загрузились карты и пронумированы айдишками с 0 до 18
+			$('.row_cards').append("<div class='deck col-2'><img id='cont"+y+"' class=' back_deck' src='img/Cards/back.png'></div>");//загрузились карты и пронумированы айдишками с 0 до 18
 			cardsLoc.push(y);//айдишки запушились в массив
 		}
 		
