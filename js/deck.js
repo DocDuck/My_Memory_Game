@@ -1,17 +1,17 @@
 var numpairs = 0;
 var logLastPaired = 0;
 var countPaired = 0;
-var counttap = 0;
+var countclick = 0;
 var openedCards = [];
 var backCards = [];
 var allmatched = [];
-var timer = 0;
-var starttheTime;
+/*var timer = 0;     //Таймер не нужен
+var starttheTime;*/
 
 var resetAll = function(){
 	numpairs = 0;
 	countPaired = 0;
-	counttap = 0;
+	countclick = 0;
 	openedCards = [];
 	backCards = [];
 	allmatched = [];
@@ -20,49 +20,50 @@ var resetAll = function(){
 
 $(document).ready(function(){
 	$('.main').hide();
+	$('.footer').hide();
 	$('.row-controls').hide();
 	$('.result').hide();
-	$('.start_container').on('tap','.start_btn',function(){
+	$('.start_container').on('click','.start_btn',function(){
 		logLastPaired = 0;
 		$('.header').delay(200).fadeOut();
-		load_cards(9);
+		load_cards(9);//бомба взорвалась, игра началась
 		//тут должен быть код, который держит карты 5 секунд рубашкой вниз(картинки), потом скрывает
 		logLastPaired = 9;
 		$('.row-controls').delay(500).fadeIn();
-		starttheTime = setInterval(function(){timer=timer+1;console.log(timer);},1000); 
+		// starttheTime = setInterval(function(){timer=timer+1;console.log(timer);},1000); нахер таймер!
 		
 		$('#reset').data(9, logLastPaired);
 		
 	});
 	
-	$('.row_cards').on('doubletap','.back_deck',function(event){
+	$('.row_cards').on('doubleclick','.back_deck',function(event){
 		backCards = [];
 		openedCards = [];
-		counttap = 0;
+		countclick = 0;
 		$(this).fadeIn();
 	});
 	
-	$('.row_cards').on('tap','.back_deck',function(){//алгоритм сравнения 2х карт после клика/тапания
-		console.log('tapped');
-		counttap++;
+	$('.row_cards').on('click','.back_deck',function(){//алгоритм сравнения 2х карт после клика/тапания
+		console.log('clickped');
+		countclick++;
 		$(this).fadeOut();//скрыли задник, открыли картинку
 		openedCards.push($(this).next().data("card"));//записали НЕПОНЯТНО КАК в массив открытых карт
 		console.log(openedCards);
-		backCards.push($(this).attr("id"));
+		backCards.push($(this).attr("id"));// не понял зачем
 		console.log(backCards);
 		matchOpen();
 				
 	});
 	
-	$('.row-controls').on('tap','#reset',function(){//реснуть колоду
+	$('.row-controls').on('click','#reset',function(){//реснуть колоду
 		resetAll();
 		$('.row_cards').empty();
 		load_cards(9);
-		starttheTime = setInterval(function(){timer=timer+1;console.log(timer);},1000);
+		// starttheTime = setInterval(function(){timer=timer+1;console.log(timer);},1000); НАХЕР ТАЙМЕР
 		console.log('reset');
 	});
 		
-	// $('.close').on('tap',function(){
+	// $('.close').on('click',function(){
 	// 	$('.result').delay(300).fadeOut();
 	// });
 	
@@ -70,23 +71,25 @@ $(document).ready(function(){
 });
 
 function matchOpen(){
-	if(counttap==2){//если тапнул 2 раза
+	if(countclick==2){//если тапнул 2 раза
 		if(backCards[0] != backCards[1]){//ПОЧЕМУ СРАВНИВАЮТСЯ ПЕРВЫЕ ДВА ЭЛЕМЕНТА МАССИВА???
-			if(openedCards[0] === openedCards[1]) {//ПОЧЕМУ СРАВНИВАЮТСЯ ПЕРВЫЕ ДВА ЭЛЕМЕНТА МАССИВА??? 
+			if(openedCards[0] === openedCards[1]) {//ПОЧЕМУ СРАВНИВАЮТСЯ ПЕРВЫЕ ДВА ЭЛЕМЕНТА МАССИВА???
 				for(var xx = 0; xx<backCards.length; xx++){
+					// $(this).animate({opacity: '0'})  куда это запихать чтобы заработало???
 					allmatched.push(backCards[xx]);//заполняется массив с раскрытыми картами
 				}
 				countPaired = countPaired+1;
+				console.log('есть совпадение')
 				if(countPaired == numpairs) {
 					//тут условие конца игры, переход на экран с количеством очков 
 					//запуск fadeOut'ов
-					setTimeout(function(){$('.result').show()},500);
-					$('.result_pairs').text('Matched '+ numpairs +' Pairs in');//тут 
-					// $('.result_time').text(timer +' Seconds'); нахер таймер
+					// setTimeout(function(){$('.result').show()},500);
+					$('.result_pairs').text('Matched '+ numpairs +' Pairs in');//условие завершения игры
+						
 					
 				}
 			}
-			else {
+			else { // ФРАГМЕНТ КОДА КОТОРЫЙ ПЕРЕВОРАЧИВАЕТ КАРТЫ ОБРАТНО В СЛУЧАЕ НЕСОВПАДЕНИЯ
 				
 				$("#"+backCards[0]).delay(200).fadeIn();//если условия не выполняются 
 				$("#"+backCards[1]).fadeIn();//обе карты снова прячутся за рубашку
@@ -98,13 +101,13 @@ function matchOpen(){
 			}
 			backCards = [];
 			openedCards = [];
-			counttap = 0;
-			console.log("All matched: "+allmatched);
+			countclick = 0;
+			console.log("All matched: "+allmatched);//в консоле запись всех раскрытых пар
 		}
 		else {
 			backCards = [];
 			openedCards = [];
-			counttap = 0;
+			countclick = 0;
 		}
 	}
 }
@@ -120,10 +123,10 @@ function shuffle(a) {
 }
 
 
-function stopTimer(){
-	clearInterval(starttheTime);
-	timer = 0;
-}
+/*function stopTimer(){
+ 	clearInterval(starttheTime);
+ 	timer = 0;
+}*/
 
 function load_cards(){
 	numpairs = 9;
