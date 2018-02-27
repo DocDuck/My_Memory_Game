@@ -15,7 +15,7 @@ var resetAll = function(){
 	openedCards = [];
 	backCards = [];
 	allmatched = [];
-	stopTimer();
+	
 }
 
 $(document).ready(function(){
@@ -84,9 +84,10 @@ function matchOpen(){
 					//тут условие конца игры, переход на экран с количеством очков 
 					//запуск fadeOut'ов
 					// setTimeout(function(){$('.result').show()},500);
-					$('.result_pairs').text('Matched '+ numpairs +' Pairs in');//условие завершения игры
-						
-					
+					/*$('.result_pairs').text('Matched '+ numpairs +' Pairs in');//Итоги игры*/
+					$('.cards_container').hide();
+					$('.row-controls').hide();		
+					$('.footer').fadeIn();
 				}
 			}
 			else { // ФРАГМЕНТ КОДА КОТОРЫЙ ПЕРЕВОРАЧИВАЕТ КАРТЫ ОБРАТНО В СЛУЧАЕ НЕСОВПАДЕНИЯ
